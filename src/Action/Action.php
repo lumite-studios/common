@@ -3,13 +3,13 @@
 namespace LumiteStudios\Common\Action;
 
 use Closure;
-use Illuminate\Support\Arr;
-use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Validator;
-use Lorisleiva\Actions\Action as BaseAction;
-use Illuminate\Validation\ValidationException;
-use Lorisleiva\Actions\Concerns\WithAttributes;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Console\Command;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Lorisleiva\Actions\Action as BaseAction;
+use Lorisleiva\Actions\Concerns\WithAttributes;
 
 /**
  * @method bool  hasMethod(string $method)

@@ -7,12 +7,18 @@ use Illuminate\Support\Str;
 use Spatie\Enum\Laravel\Enum as LaravelEnum;
 
 /**
+ * @method static int           count()
  * @method static array         keyByValue(array|string $label = 'label')
  * @method static Closure|array labels()
  * @method static self          random()
  */
 class Enum extends LaravelEnum
 {
+    public static function count(): int
+    {
+        return count(self::cases());
+    }
+
     public static function keyByValue(array|string $label = 'label'): array
     {
         return collect(self::cases())
