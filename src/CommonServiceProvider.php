@@ -3,10 +3,11 @@
 namespace LumiteStudios\Common;
 
 use Carbon\CarbonImmutable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
 
@@ -16,7 +17,8 @@ class CommonServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->bootDefaults();
+        $this->bootDefaults()
+            ->bootMacrosStr();
     }
 
     protected function bootDefaults(): static
@@ -34,6 +36,19 @@ class CommonServiceProvider extends ServiceProvider
             ->max(255)
             ->uncompromised());
         Gate::guessPolicyNamesUsing(fn (string $modelClass) => "{$modelClass}Policy");
+
+        return $this;
+    }
+
+    protected function bootMacrosStr(): static
+    {
+        Str::macro('randomAlpha', function (int $amount = 10) {
+            return mb_substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'), 1, $amount);
+        });
+
+        Str::macro('obscureEmail', function (?string $email, string $char = '*') {
+            return Str::replaceMatches('/(?!^).(?=[^@]+@)/', fn ($matches) => $char, $email);
+        });
 
         return $this;
     }
