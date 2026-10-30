@@ -9,7 +9,7 @@ namespace LumiteStudios\Common\Model\Concerns;
  */
 trait HasCacheKey
 {
-    protected string $cacheId = 'id';
+    public string $cacheId = 'id';
 
     public static function generateCacheKey(string $cacheId, string $table, ?string $field = null, ?string $key = null): string
     {
