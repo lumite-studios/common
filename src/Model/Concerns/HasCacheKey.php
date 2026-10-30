@@ -9,8 +9,6 @@ namespace LumiteStudios\Common\Model\Concerns;
  */
 trait HasCacheKey
 {
-    public string $cacheId = 'id';
-
     public static function generateCacheKey(string $cacheId, string $table, ?string $field = null, ?string $key = null): string
     {
         $start = $key
@@ -25,10 +23,17 @@ trait HasCacheKey
     public function getCacheKey(?string $field = null, ?string $key = null): string
     {
         return $this->generateCacheKey(
-            $this[$this->cacheId],
+            $this[$this->getCacheId()],
             $this->getTable(),
             $field,
             $key,
         );
+    }
+
+    public function getCacheId(): string
+    {
+        return property_exists($this, 'cacheId')
+            ? $this->cacheId
+            : 'id';
     }
 }
