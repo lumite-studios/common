@@ -14,7 +14,8 @@
         "lorisleiva/laravel-actions": "^2.0",
         "spatie/laravel-data": "^4.0",
         "spatie/laravel-enum": "^3.0",
-        "spatie/laravel-sluggable": "^4.0"
+        "spatie/laravel-sluggable": "^4.0",
+        "calebporzio/sushi": "^2.5"
     },
     "require-dev": {
         "laravel/pint": "^1.0"
