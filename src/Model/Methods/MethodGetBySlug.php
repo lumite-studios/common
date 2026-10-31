@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Builder;
  */
 trait MethodGetBySlug
 {
-    public static function getBySlug(string $slug): static
+    public static function getBySlug(string $slug): ?static
     {
         return static::where('slug', $slug)->first();
     }
