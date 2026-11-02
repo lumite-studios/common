@@ -3,6 +3,7 @@
 namespace LumiteStudios\Common\Extend;
 
 use Closure;
+use Livewire\Wireable;
 use Illuminate\Support\Str;
 use Spatie\Enum\Laravel\Enum as LaravelEnum;
 
@@ -12,7 +13,7 @@ use Spatie\Enum\Laravel\Enum as LaravelEnum;
  * @method static Closure|array labels()
  * @method static self          random()
  */
-class Enum extends LaravelEnum
+class Enum extends LaravelEnum implements Wireable
 {
     public static function count(): int
     {
