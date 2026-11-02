@@ -3,8 +3,8 @@
 namespace LumiteStudios\Common\Extend;
 
 use Closure;
-use Livewire\Wireable;
 use Illuminate\Support\Str;
+use Livewire\Wireable;
 use Spatie\Enum\Laravel\Enum as LaravelEnum;
 
 /**
