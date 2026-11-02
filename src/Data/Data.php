@@ -12,4 +12,9 @@ class Data extends BaseData
             ->transform(fn ($v) => is_bool($v) ? ($v ? '1' : '0') : $v)
             ->toArray();
     }
+
+    public function forFilamentInfolist(): array
+    {
+        return $this->forFilamentForm();
+    }
 }
